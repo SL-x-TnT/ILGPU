@@ -11,7 +11,9 @@
 
 using ILGPU.Backends;
 using ILGPU.Backends.EntryPoints;
+using ILGPU.Backends.PTX;
 using ILGPU.Resources;
+using ILGPU.Runtime.Cuda;
 using ILGPU.Util;
 using System;
 using System.Collections.Generic;
@@ -444,10 +446,27 @@ namespace ILGPU.Runtime
             where TKernelLoader : struct, IKernelLoader
         {
             var compiledKernel = CompileKernel(entry, specialization);
-            return kernelLoader.LoadKernel(
-                this,
-                compiledKernel,
-                out kernelInfo);
+
+            try
+            {
+                return kernelLoader.LoadKernel(
+                    this,
+                    compiledKernel,
+                    out kernelInfo);
+            }
+            catch (CudaException)
+            {
+                if (compiledKernel is PTXCompiledKernel ptxKernel)
+                {
+                    Trace.WriteLine($"\n\n{ptxKernel.PTXAssembly}");
+                }
+
+                throw;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         /// <summary>
