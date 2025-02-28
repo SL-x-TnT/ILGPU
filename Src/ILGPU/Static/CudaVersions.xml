@@ -548,4 +548,5 @@
     <Version InstructionSet="8.5" Driver="12.5" Architecture="8.7" />
     <Version InstructionSet="8.5" Driver="12.5" Architecture="8.9" />
     <Version InstructionSet="8.5" Driver="12.5" Architecture="9.0" />
+    <Version InstructionSet="8.7" Driver="12.8" Architecture="12.0" />
 </Versions>
