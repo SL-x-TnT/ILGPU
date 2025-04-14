@@ -54,6 +54,10 @@
     <Import Name="cuCtxSetCacheConfig">
         <Parameter Name="config" Type="CudaCacheConfiguration" />
     </Import>
+    <Import Name="cuFuncSetCacheConfig">
+        <Parameter Name="func" Type="IntPtr" />
+        <Parameter Name="config" Type="CudaCacheConfiguration" />
+    </Import>
     <Import Name="cuCtxGetSharedMemConfig">
         <Parameter Name="pConfig" Type="CudaSharedMemoryConfiguration" Flags="Out" />
     </Import>

@@ -238,6 +238,15 @@ namespace ILGPU.Runtime.Cuda
             cuCtxSetCacheConfig(config);
 
         /// <summary>
+        /// Updates the cache configuration for a device function.
+        /// </summary>
+        /// <param name="func">The devicce function.</param>
+        /// <param name="config">The updated cache configuration.</param>
+        /// <returns>The error status.</returns>
+        public CudaError SetFuncCacheConfig(IntPtr func, CudaCacheConfiguration config) =>
+            cuFuncSetCacheConfig(func, config);
+
+        /// <summary>
         /// Resolves the shared-memory configuration.
         /// </summary>
         /// <param name="config">The resolved shared-memory configuration.</param>
