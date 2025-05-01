@@ -256,6 +256,15 @@ namespace ILGPU.Runtime.OpenCL
             Name = CurrentAPI.GetDeviceInfo(
                 DeviceId,
                 CLDeviceInfoType.CL_DEVICE_NAME);
+
+            var vendorId = CurrentAPI.GetDeviceInfo<int>(DeviceId, CLDeviceInfoType.CL_DEVICE_VENDOR_ID);
+
+            //AMD, pull AMD board name
+            if (vendorId == 0x1002)
+            {
+                Name = CurrentAPI.GetDeviceInfo(DeviceId, CLDeviceInfoType.CL_DEVICE_BOARD_NAME_AMD);
+            }
+
             DeviceType = (CLDeviceType)CurrentAPI.GetDeviceInfo<long>(
                 DeviceId,
                 CLDeviceInfoType.CL_DEVICE_TYPE);
