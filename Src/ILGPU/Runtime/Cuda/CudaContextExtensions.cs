@@ -94,12 +94,12 @@ namespace ILGPU.Runtime.Cuda
             if (builder.LibDevicePath is null && builder.LibNvvmPath is null)
                 builder.LibDevice(throwIfNotFound: false);
 
-            if (IsRunningOnWSL())
-            {
-                NativeLibrary.SetDllImportResolver(
-                    Assembly.GetExecutingAssembly(),
-                    CudaWSLDllImportResolver);
-            }
+            //if (IsRunningOnWSL())
+            //{
+            //    NativeLibrary.SetDllImportResolver(
+            //        Assembly.GetExecutingAssembly(),
+            //        CudaWSLDllImportResolver);
+            //}
 
             CudaDevice.GetDevices(
                 configure,
