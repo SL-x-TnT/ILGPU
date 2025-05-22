@@ -246,6 +246,9 @@ namespace ILGPU.Runtime.Cuda
         public CudaError SetFuncCacheConfig(IntPtr func, CudaCacheConfiguration config) =>
             cuFuncSetCacheConfig(func, config);
 
+        public CudaError SetFuncAttribute(IntPtr func, CudaFuncAttribute attrib, int value) =>
+            cuFuncSetAttribute(func, attrib, value);
+
         /// <summary>
         /// Resolves the shared-memory configuration.
         /// </summary>

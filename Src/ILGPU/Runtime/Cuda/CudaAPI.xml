@@ -54,6 +54,11 @@
     <Import Name="cuCtxSetCacheConfig">
         <Parameter Name="config" Type="CudaCacheConfiguration" />
     </Import>
+    <Import Name="cuFuncSetAttribute">
+        <Parameter Name="func" Type="IntPtr" />
+        <Parameter Name="attrib" Type="CudaFuncAttribute" />
+        <Parameter Name="value" Type="int" />
+    </Import>
     <Import Name="cuFuncSetCacheConfig">
         <Parameter Name="func" Type="IntPtr" />
         <Parameter Name="config" Type="CudaCacheConfiguration" />
